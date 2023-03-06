@@ -11,7 +11,6 @@ import 'core/init/routes/routes.dart';
 import 'core/repo/app_repo.dart';
 import 'core/service/auth_service.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -57,7 +56,7 @@ class _MyAppState extends State<MyApp> {
             theme: ThemeData(
               primarySwatch: Styles.colors.kPrimaryColor,
             ),
-            initialRoute: Routes.PLUGIN,
+            initialRoute: _isLoggedIn ? Routes.PLUGIN : Routes.LOGIN,
             onGenerateRoute: PageRouter.generateRoutes,
           );
         });

@@ -17,6 +17,7 @@ class Plugin extends GetView<PluginController> {
   Widget build(BuildContext context) {
     return BaseScaffold(
       isLoggedIn: true,
+      isBackgroundImageVisible: true,
       title: 'PLUGIN',
       child: Padding(
         padding: EdgeInsets.fromLTRB(22.w, 0.06.sh, 22.w, 16.h),

@@ -40,7 +40,7 @@ class LoginController extends GetxController {
     }).onError((error, stackTrace) {
       Utils().hideLoading();
       Utils().showSnackBar(
-          'Failed', 'Something went wrong', SnackBarStatus.failure);
+          'Failed', 'Invalid OTP', SnackBarStatus.failure);
     });
   }
 }

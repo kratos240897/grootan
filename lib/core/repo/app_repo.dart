@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/instance_manager.dart';
+import 'package:grootan/core/init/utils/utils.dart';
 import 'package:uuid/uuid.dart';
 import '../data/models/login_details.dart';
 
@@ -21,24 +22,21 @@ class AppRepo {
   }
 
   Future<LoginDetails> getCurrentLogin() async {
-    final docs = await getAllLogins();
-    return docs.first;
+    var logins = await getAllLogins();
+    logins = Utils.sortListDateandTimeWise(logins);
+    return logins[0];
   }
 
   Future<LoginDetails> getLasttLogin() async {
-    final docs = await getAllLogins()
-      ..sort((a, b) {
-        var aDate = DateTime.parse(a.loginTime);
-        var bDate = DateTime.parse(b.loginTime);
-        return aDate.compareTo(bDate);
-      });
-    return docs[docs.length - 2];
+    var logins = await getAllLogins();
+    logins = Utils.sortListDateandTimeWise(logins);
+    return logins[1];
   }
 
   Future<bool> updateQR(String imageUrl) async {
-    final doc = await getCurrentLogin();
-    if (doc.qrImage.isEmpty) {
-      await _loginDetailsCollection.doc(doc.id).update({'qr_image': imageUrl});
+    final login = await getCurrentLogin();
+    if (login.qrImage.isEmpty) {
+      await _loginDetailsCollection.doc(login.id).update({'qr_image': imageUrl});
       return true;
     } else {
       return false;

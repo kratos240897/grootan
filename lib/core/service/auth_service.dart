@@ -55,4 +55,15 @@ class AuthService {
       return null;
     }
   }
+
+  Future<bool> signOut() async {
+    try {
+      await _auth.signOut();
+      return true;
+    } on FirebaseAuthException {
+      return false;
+    } on Exception {
+      return false;
+    }
+  }
 }

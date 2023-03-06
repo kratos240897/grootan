@@ -11,6 +11,7 @@ class _Colors {
   final kPrimaryColor = _getMaterialColorFromColor(const Color(0xff2f2b5f));
   final kButtonColor = _getMaterialColorFromColor(const Color(0xff3e3e3e));
   final kCardColor = _getMaterialColorFromColor(const Color(0xff121212));
+  final kBubbleColor = _getMaterialColorFromColor(const Color(0xff7c799a));
 
   static MaterialColor _getMaterialColorFromColor(Color color) {
     Map<int, Color> colorShades = {

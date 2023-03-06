@@ -32,8 +32,8 @@ class PluginController extends GetxController {
     Utils().showLoading();
     await _getCurrentPosition();
     await _getIpAddress();
-    await _getlastLoginTime();
     await _storeLoginDetails();
+    await _getlastLoginTime();
     Utils().hideLoading();
     super.onReady();
   }

@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import '../../constants/app/styles.dart';
 import '../../constants/enum/device_type.dart';
 import '../../constants/enum/snack_bar_status.dart';
+import '../../data/models/login_details.dart';
 
 class Utils {
   Utils._();
@@ -109,6 +109,16 @@ class Utils {
 
   hideLoading() {
     Navigator.pop(context);
+  }
+
+  static List<LoginDetails> sortListDateandTimeWise(List<LoginDetails> loginList) {
+    loginList.sort((a, b) {
+      var aDate = DateTime.parse(a.loginTime);
+      var bDate = DateTime.parse(b.loginTime);
+      return aDate.compareTo(bDate);
+    });
+    loginList = List.from(loginList.reversed);
+    return loginList;
   }
 
   static DeviceType getDeviceType() {
